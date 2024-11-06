@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/AgueVs/HelloWorld/funciones"
 
 func helloworld() string {
 	return "Hello World!!"
@@ -8,4 +10,5 @@ func helloworld() string {
 
 func main() {
 	fmt.Println(helloworld())
+	fmt.Println(funciones.chino("Hello World!!"))
 }
