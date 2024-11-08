@@ -8,7 +8,7 @@ func init () {
 }
 
 
-func chino (cadena string) string {
+func chino () string {
 
 	return "你好世界 ！！"
 }
