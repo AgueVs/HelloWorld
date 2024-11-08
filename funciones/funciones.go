@@ -8,7 +8,7 @@ func init () {
 }
 
 
-func chino () string {
+func Chino () string {
 
 	return "你好世界 ！！"
 }

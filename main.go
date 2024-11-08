@@ -11,5 +11,5 @@ func helloworld() string {
 
 func main() {
 	fmt.Println(helloworld())
-	fmt.Println(funciones.chino())
+	fmt.Println(funciones.Chino())
 }
