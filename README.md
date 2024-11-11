@@ -1,5 +1,13 @@
-# HelloWorld
-Hello World!!
+# Como usar el gitHub por primera vez:
+
+```bash
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/aguevs/HelloWorld.git
+git push -u origin main
+```
 
 # Ejecutar el programa:
 
@@ -13,22 +21,16 @@ go run main.go
 go test
 ```
 
-# Generar el binario:
+# Generar el binario y ejecutarlo:
 
 ```bash
 go build
+./HelloWorld
 ```
 
-# Instalar el binario:
+# Instalar el binario y ejecutarlo desde cualquier lado:
 
 ```bash
 go install
+HelloWorld 
 ```
-
-NOTA: SUBIR COSAS A REPO
-git init
-git add .
-git commit -m "first commit"
-git branch -M main 
-git remote add origin https://github.com/aguevs/HelloWorld.git
-git push -u origin main
