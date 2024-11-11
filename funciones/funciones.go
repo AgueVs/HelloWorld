@@ -1,10 +1,10 @@
 package funciones
 import (
-	"fmt"
+	"log"
 )
 
 func init () {
-     fmt.Println("Este es el modulo Init de paquete funciones")
+     log.Println("Este es el modulo Init de paquete funciones. No tiene nada")
 }
 
 
