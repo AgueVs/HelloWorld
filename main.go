@@ -146,6 +146,34 @@ func  πMonteCarlo(rad int) float64 {
 
 }
 
+// Conjunto representa un conjunto de enteros
+type Conjunto struct {
+	elementos map[byte]struct{}
+}
+
+// NuevoConjunto crea un nuevo conjunto vacío
+func NuevoConjunto() *Conjunto {
+	return &Conjunto{elementos: make(map[byte]struct{})}
+}
+
+// Añadir agrega un elemento al conjunto
+func (c *Conjunto) Añadir(elemento byte) string{
+	c.elementos[elemento] = struct{}{}
+	return "añadido"
+}
+
+// Borrar elimina un elemento del conjunto
+func (c *Conjunto) Borrar(elemento byte) string{
+	delete(c.elementos, elemento)
+	return "borrado"
+}
+
+// Existe verifica si un elemento está en el conjunto
+func (c *Conjunto) Existe(elemento byte) bool {
+	_, existe := c.elementos[elemento]
+	return existe
+}
+
 /* Funcion Main;
 
   Ejercicio1: nos imprime por consola "Hola Mundo" en Ingles y Chino.
@@ -156,6 +184,7 @@ func  πMonteCarlo(rad int) float64 {
                   Con n runes tomados de una cadena input de entrada (pendiente de hacer este paso)
   Ejericcio3: Programar la función π que devuelve una aproximación del valor del
               número irracional π usando el método de Monte-Carlo sobre cuadrados de dimensión arbitraria.
+  Ejercicio4: Programar el tipo de datos de conjunto junto con sus operaciones de Añadir, Borrar, Existe
 
 */
 func main() {
@@ -197,6 +226,29 @@ func main() {
 	fmt.Println("EJERCICIO 3:")
 	// Normalmente calculamos π en 2 dimensiones el parametro de entrada es el tamaño de circulo (radio).
 	fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n",1, πMonteCarlo(1))
-    fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n",10, πMonteCarlo(10))
+        fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n",10, πMonteCarlo(10))
 	fmt.Println("----------------------------------------")
+	// Ejericcio4:
+	fmt.Println("EJERCICIO 4:")
+	// Definimos un nuevo conjunto
+        conjunto := NuevoConjunto()
+	// Añadimos el elemento 1.
+	fmt.Println("el numero 1 fue", conjunto.Añadir(byte(1)), "al conjunto")
+	// Añadimos el elemento 3.
+        fmt.Println("el numero 3 fue", conjunto.Añadir(byte(3)), "al conjunto")
+	// Existe el elemento 1? --> Si 
+        fmt.Println("Existe el 1 en el conjunto?", conjunto.Existe(byte(1))) // Devuelve true
+	// Existe el elemento 2? --> NO
+        fmt.Println("Existe el 2 en el conjunto?", conjunto.Existe(byte(2))) // Devuelve false
+	// Borrar el elemento 1
+	fmt.Println("el numero 1 fue", conjunto.Borrar(byte(1)), "del conjunto")
+	// Existe el elemento 1? --> No
+        fmt.Println("Existe el 1 en el conjunto?", conjunto.Existe(byte(1))) // Devuelve false
+	// Añadir el elemento π
+	var r rune = 'π'
+	fmt.Println("el caracter π fue", conjunto.Añadir(byte(r)), "al conjunto")
+	fmt.Println("Existe el π en el conjunto?", conjunto.Existe(byte(r))) // Devuelve true
+        fmt.Println("----------------------------------------")
+
+
 }
