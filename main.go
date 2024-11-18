@@ -10,7 +10,7 @@ import (
 )
 
 // Funcion que devuelve Hello World
-func helloworld() string {
+func Helloworld() string {
 	return "Hello World!!"
 }
 
@@ -65,7 +65,7 @@ func RandRunes2(n int, cadena string) string {
 }
 
 // Funcion para obtener una cadena de n runas aleatorias de la cadena de entrada
-func runasAleatorias(n int, input string) (string, error) {
+func RunasAleatorias(n int, input string) (string, error) {
 
 	// Convertir la cadena de entrada a un slice de runas
 	runas := []rune(input)
@@ -191,7 +191,7 @@ func main() {
 	// Ejercicio1:
 	fmt.Println("----------------------------------------")
 	fmt.Println("EJERCICIO 1:")
-	fmt.Println(helloworld())
+	fmt.Println(Helloworld())
 	fmt.Println(funciones.Chino())
 	fmt.Println("----------------------------------------")
 	// Ejercicio2:
@@ -207,14 +207,14 @@ func main() {
     	fmt.Println("Estas son las 10 runes de esta cadena: a你cd$%&efghijklmnopq&/()%$·")
 	fmt.Println("Usando el método RandRunes pero no es 100% exacto: ", RandRunes(10,"a你cd$%&efghijklmnopq&/()%$·"))
 	fmt.Println("Usando el método RandRunes2 generado por Javi Valdez: ", RandRunes2(10,"a你cd$%&efghijklmnopq&/()%$·"))
-        substring, err := runasAleatorias(10,"a你cd$%&efghijklmnopq&/()%$·")
+        substring, err := RunasAleatorias(10,"a你cd$%&efghijklmnopq&/()%$·")
 	if err!=nil { 
 		fmt.Println("RandRunes fallo usando el método runasAleatorias?", err)
         }else{
 	      fmt.Println("RandRunes usando el método runasAleatorias:", substring)
         }
 
-        substring2, err2 := runasAleatorias(100,"a你cd$%&efghijklmnopq&/()%$·")
+        substring2, err2 := RunasAleatorias(100,"a你cd$%&efghijklmnopq&/()%$·")
         if err2!=nil { 
                 fmt.Println("RandRunes fallo usando el método runasAleatorias?", err2)
         }else{
