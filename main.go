@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-//	"log"
-	"unicode/utf8"
 	"math/rand"
 	"time"
+	"unicode/utf8"
+
 	"github.com/aguevs/HelloWorld/funciones"
 )
 
@@ -14,54 +14,55 @@ func Helloworld() string {
 	return "Hello World!!"
 }
 
-//funcion que devuelva una cadena de caracteres con n bytes tomados de una cadena input de entrada
-func RandBytes (length int, cadena string) string {
-        var substr string
+// funcion que devuelva una cadena de caracteres con n bytes tomados de una cadena input de entrada
+func RandBytes(length int, cadena string) string {
+	var substr string
 
-        buf := make([]byte, length) 
-        for i:= range buf {
-             buf[i] = cadena[rand.Intn(len(cadena))]
-	     substr = string(buf)}
-     return substr
+	buf := make([]byte, length)
+	for i := range buf {
+		buf[i] = cadena[rand.Intn(len(cadena))]
+		substr = string(buf)
+	}
+	return substr
 }
 
-//funcion que devuelva una cadena de caracteres con n runes tomados de una cadena input de entrada
-func RandRunes (length int, cadena string) string {
+// funcion que devuelva una cadena de caracteres con n runes tomados de una cadena input de entrada
+func RandRunes(length int, cadena string) string {
 
 	//longitud del string en runes
-        runes := utf8.RuneCountInString(cadena)
-        substr := make([]rune, length)
-	
-	// Inicializar el generador de números aleatorios
-        rand.Seed(time.Now().UnixNano())
+	runes := utf8.RuneCountInString(cadena)
+	substr := make([]rune, length)
 
-        for i:= 0; i < length; i++ {
-	     number := rand.Intn(runes)
-	     for pos, runa := range cadena {
-		   // pos es la posicion de byte.
-		   //como podemos comprobar que esta posicon de byte corresponde a la posicion number de runa que queremos.
-                   if pos == number {
-			   substr[i] = runa    
-                   }
-	     }
+	// Inicializar el generador de números aleatorios
+	rand.Seed(time.Now().UnixNano())
+
+	for i := 0; i < length; i++ {
+		number := rand.Intn(runes)
+		for pos, runa := range cadena {
+			// pos es la posicion de byte.
+			//como podemos comprobar que esta posicon de byte corresponde a la posicion number de runa que queremos.
+			if pos == number {
+				substr[i] = runa
+			}
+		}
 	}
 	return string(substr)
 }
 
-//Funcion hecha por Javi Valdez
+// Funcion hecha por Javi Valdez
 func RandRunes2(n int, cadena string) string {
 
-    cadenaRune := []rune(cadena)
+	cadenaRune := []rune(cadena)
 
-    rand.Seed(time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano())
 
-    result := make([]rune, n)
+	result := make([]rune, n)
 
-    for i := 0; i < n; i++ {
-        result[i] = cadenaRune[rand.Intn(len(cadenaRune))]
-    }
+	for i := 0; i < n; i++ {
+		result[i] = cadenaRune[rand.Intn(len(cadenaRune))]
+	}
 
-    return string(result)
+	return string(result)
 }
 
 // Funcion para obtener una cadena de n runas aleatorias de la cadena de entrada
@@ -99,7 +100,6 @@ func RunasAleatorias(n int, input string) (string, error) {
 	return resultado, nil
 }
 
-
 /*Requirio ayuda de internet y explicaciones matematicas para entender dicho metodo de estadisticas.
 
 Generación de Puntos Aleatorios:
@@ -122,17 +122,17 @@ A más puntos, más precisa será la aproximación, pero también requerirá má
 Este método es flexible y permite cambiar el radio del círculo, lo que ilustra cómo el método de Monte Carlo puede adaptarse a diferentes escenarios.
 */
 
-func  πMonteCarlo(rad int) float64 {
+func πMonteCarlo(rad int) float64 {
 
 	rand.Seed(time.Now().UnixNano())
 	insideCircle := 0
-	numPoints :=100000
+	numPoints := 100000
 	radio := float64(rad)
 
 	for i := 0; i < numPoints; i++ {
 		// Generar un punto aleatorio (x, y) en el cuadrado [-radio, radio] x [-radio, radio]
-		x := rand.Float64()*2*radio-radio
-		y := rand.Float64()*2*radio-radio
+		x := rand.Float64()*2*radio - radio
+		y := rand.Float64()*2*radio - radio
 
 		// Comprobar si el punto está dentro del círculo de radio `radio`
 		if x*x+y*y <= float64(radio*radio) {
@@ -157,13 +157,13 @@ func NuevoConjunto() *Conjunto {
 }
 
 // Añadir agrega un elemento al conjunto
-func (c *Conjunto) Añadir(elemento byte) string{
+func (c *Conjunto) Añadir(elemento byte) string {
 	c.elementos[elemento] = struct{}{}
 	return "añadido"
 }
 
 // Borrar elimina un elemento del conjunto
-func (c *Conjunto) Borrar(elemento byte) string{
+func (c *Conjunto) Borrar(elemento byte) string {
 	delete(c.elementos, elemento)
 	return "borrado"
 }
@@ -174,18 +174,18 @@ func (c *Conjunto) Existe(elemento byte) bool {
 	return existe
 }
 
-/* Funcion Main;
+/*
+Funcion Main;
 
-  Ejercicio1: nos imprime por consola "Hola Mundo" en Ingles y Chino.
-                Hola Mundo en ingles usando una funcion creada en este paquete main.
-                Hola Mundo en chino usando una funcion creada en otro paquete llamado funciones creado por mi.
-  Ejercicio2: funciones que nos devuelva una cadena de caracteres
-                  Con n bytes tomados de una cadena input de entrada
-                  Con n runes tomados de una cadena input de entrada (pendiente de hacer este paso)
-  Ejericcio3: Programar la función π que devuelve una aproximación del valor del
-              número irracional π usando el método de Monte-Carlo sobre cuadrados de dimensión arbitraria.
-  Ejercicio4: Programar el tipo de datos de conjunto junto con sus operaciones de Añadir, Borrar, Existe
-
+	Ejercicio1: nos imprime por consola "Hola Mundo" en Ingles y Chino.
+	              Hola Mundo en ingles usando una funcion creada en este paquete main.
+	              Hola Mundo en chino usando una funcion creada en otro paquete llamado funciones creado por mi.
+	Ejercicio2: funciones que nos devuelva una cadena de caracteres
+	                Con n bytes tomados de una cadena input de entrada
+	                Con n runes tomados de una cadena input de entrada (pendiente de hacer este paso)
+	Ejericcio3: Programar la función π que devuelve una aproximación del valor del
+	            número irracional π usando el método de Monte-Carlo sobre cuadrados de dimensión arbitraria.
+	Ejercicio4: Programar el tipo de datos de conjunto junto con sus operaciones de Añadir, Borrar, Existe
 */
 func main() {
 	// Ejercicio1:
@@ -197,58 +197,57 @@ func main() {
 	// Ejercicio2:
 	fmt.Println("EJERCICIO 2:")
 	fmt.Println("Estos son los 10 bytes de esta cadena: abcdefghijklmnopqrstuvwxyz")
-	fmt.Println(RandBytes(10,"abcdefghijklmnopqrstuvwxyz"))
+	fmt.Println(RandBytes(10, "abcdefghijklmnopqrstuvwxyz"))
 	// Aqui son 10 bytes pero tenemos caracters especiales que ocupan mas de 1 byte.
 	// A veces falla con una ? porque coge un byte que realmente es de una runa que ocupa mas de 1 byte.
 	fmt.Println("Estos son los 10 bytes de esta cadena: a你cd$%&efghijklmnopq&/()%$·")
-	fmt.Println(RandBytes(10,"a你cd$%&efghijklmnopq&/()%$·"))
+	fmt.Println(RandBytes(10, "a你cd$%&efghijklmnopq&/()%$·"))
 	fmt.Println("Estos son los 100 bytes de esta cadena: abcdefghijklmnopqrstuvwxyz")
-	fmt.Println(RandBytes(100,"abcdefghijklmnopqrstuvwxyz"))
-    	fmt.Println("Estas son las 10 runes de esta cadena: a你cd$%&efghijklmnopq&/()%$·")
-	fmt.Println("Usando el método RandRunes pero no es 100% exacto: ", RandRunes(10,"a你cd$%&efghijklmnopq&/()%$·"))
-	fmt.Println("Usando el método RandRunes2 generado por Javi Valdez: ", RandRunes2(10,"a你cd$%&efghijklmnopq&/()%$·"))
-        substring, err := RunasAleatorias(10,"a你cd$%&efghijklmnopq&/()%$·")
-	if err!=nil { 
+	fmt.Println(RandBytes(100, "abcdefghijklmnopqrstuvwxyz"))
+	fmt.Println("Estas son las 10 runes de esta cadena: a你cd$%&efghijklmnopq&/()%$·")
+	fmt.Println("Usando el método RandRunes pero no es 100% exacto: ", RandRunes(10, "a你cd$%&efghijklmnopq&/()%$·"))
+	fmt.Println("Usando el método RandRunes2 generado por Javi Valdez: ", RandRunes2(10, "a你cd$%&efghijklmnopq&/()%$·"))
+	substring, err := RunasAleatorias(10, "a你cd$%&efghijklmnopq&/()%$·")
+	if err != nil {
 		fmt.Println("RandRunes fallo usando el método runasAleatorias?", err)
-        }else{
-	      fmt.Println("RandRunes usando el método runasAleatorias:", substring)
-        }
+	} else {
+		fmt.Println("RandRunes usando el método runasAleatorias:", substring)
+	}
 
-        substring2, err2 := RunasAleatorias(100,"a你cd$%&efghijklmnopq&/()%$·")
-        if err2!=nil { 
-                fmt.Println("RandRunes fallo usando el método runasAleatorias?", err2)
-        }else{
-              fmt.Println("RandRunes usando el método runasAleatorias:", substring2)
-        }
+	substring2, err2 := RunasAleatorias(100, "a你cd$%&efghijklmnopq&/()%$·")
+	if err2 != nil {
+		fmt.Println("RandRunes fallo usando el método runasAleatorias?", err2)
+	} else {
+		fmt.Println("RandRunes usando el método runasAleatorias:", substring2)
+	}
 
-    	fmt.Println("----------------------------------------")
-    	// Ejercicio3:
+	fmt.Println("----------------------------------------")
+	// Ejercicio3:
 	fmt.Println("EJERCICIO 3:")
 	// Normalmente calculamos π en 2 dimensiones el parametro de entrada es el tamaño de circulo (radio).
-	fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n",1, πMonteCarlo(1))
-        fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n",10, πMonteCarlo(10))
+	fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n", 1, πMonteCarlo(1))
+	fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n", 10, πMonteCarlo(10))
 	fmt.Println("----------------------------------------")
 	// Ejericcio4:
 	fmt.Println("EJERCICIO 4:")
 	// Definimos un nuevo conjunto
-        conjunto := NuevoConjunto()
+	conjunto := NuevoConjunto()
 	// Añadimos el elemento 1.
 	fmt.Println("el numero 1 fue", conjunto.Añadir(byte(1)), "al conjunto")
 	// Añadimos el elemento 3.
-        fmt.Println("el numero 3 fue", conjunto.Añadir(byte(3)), "al conjunto")
-	// Existe el elemento 1? --> Si 
-        fmt.Println("Existe el 1 en el conjunto?", conjunto.Existe(byte(1))) // Devuelve true
+	fmt.Println("el numero 3 fue", conjunto.Añadir(byte(3)), "al conjunto")
+	// Existe el elemento 1? --> Si
+	fmt.Println("Existe el 1 en el conjunto?", conjunto.Existe(byte(1))) // Devuelve true
 	// Existe el elemento 2? --> NO
-        fmt.Println("Existe el 2 en el conjunto?", conjunto.Existe(byte(2))) // Devuelve false
+	fmt.Println("Existe el 2 en el conjunto?", conjunto.Existe(byte(2))) // Devuelve false
 	// Borrar el elemento 1
 	fmt.Println("el numero 1 fue", conjunto.Borrar(byte(1)), "del conjunto")
 	// Existe el elemento 1? --> No
-        fmt.Println("Existe el 1 en el conjunto?", conjunto.Existe(byte(1))) // Devuelve false
+	fmt.Println("Existe el 1 en el conjunto?", conjunto.Existe(byte(1))) // Devuelve false
 	// Añadir el elemento π
 	var r rune = 'π'
 	fmt.Println("el caracter π fue", conjunto.Añadir(byte(r)), "al conjunto")
 	fmt.Println("Existe el π en el conjunto?", conjunto.Existe(byte(r))) // Devuelve true
-        fmt.Println("----------------------------------------")
-
+	fmt.Println("----------------------------------------")
 
 }
