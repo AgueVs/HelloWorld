@@ -2,8 +2,10 @@ package main_test
 
 import "testing"
 
-func TestHelloWorld(t *testing.T) {
-	if helloworld() != "Hello World!!" {
+func testhelloWorld(t *testing.T) {
+	if Helloworld() != "Hello World!!" {
 		t.Fatal("Test fail")
+	} else {
+		t.Logf("OK")
 	}
 }
