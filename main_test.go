@@ -1,10 +1,10 @@
 package main
 
 import (
+	"math"
 	"math/rand"
 	"testing"
 	"time"
-
 	"unicode/utf8"
 
 	"github.com/aguevs/HelloWorld/funciones"
@@ -49,18 +49,24 @@ func TestEjercicio2(t *testing.T) {
 	if err != nil {
 		t.Fatal("RandRunes fallo usando el método runasAleatorias porque no se puede sacar una subcadena de la cadena", substring, err)
 	}
-
 }
 
-/*
-fmt.Println("----------------------------------------")
-// Ejercicio3:
-fmt.Println("EJERCICIO 3:")
-// Normalmente calculamos π en 2 dimensiones el parametro de entrada es el tamaño de circulo (radio).
-fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n", 1, πMonteCarlo(1))
-fmt.Printf("Aproximación de π en cuadrados con %d de radio: %f\n", 10, πMonteCarlo(10))
-fmt.Println("----------------------------------------")
-*/
+func TestEjercicio3(t *testing.T) {
+
+	// Define el número de puntos y el margen de error aceptable
+	numPoints := 1000000
+	acceptableError := 0.01
+	expectedPi := math.Pi
+
+	// Ejecuta la función para estimar Pi
+	estimatedPi := πMonteCarlo(numPoints)
+
+	// Calcula la diferencia absoluta entre el valor esperado y el estimado
+	if math.Abs(estimatedPi-expectedPi) > acceptableError {
+		t.Errorf("Estimación de Pi incorrecta: got %f, want %f", estimatedPi, expectedPi)
+	}
+}
+
 func TestEjercicio4(t *testing.T) {
 
 	conjunto := NuevoConjunto()
